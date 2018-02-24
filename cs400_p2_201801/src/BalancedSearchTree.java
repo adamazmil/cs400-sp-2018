@@ -38,6 +38,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	}
 
 	@Override
+	//hello
 	public boolean isEmpty() {
 		//TODO return empty if there are no keys in structure
 	    if (root==null) {
