@@ -56,6 +56,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 		//TODO return the height of this tree
 		return heightHelper(root); 
 	}
+	
 
 	@Override
 	public boolean lookup(T item) {
@@ -148,6 +149,12 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	}
 	private void Parent() {
 	    
+	}
+	private int getBalance(Treenode n) {
+	    if (n==null) {
+	        return 0;
+	    }
+	    return heightHelper(n.left) - heightHelper(n.right);
 	}
 	
 
