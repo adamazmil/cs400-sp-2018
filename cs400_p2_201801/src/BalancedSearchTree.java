@@ -141,16 +141,31 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    }
 	    
 	}
-	private void leftRotate() {
-	    
+	private Treenode<T> leftRotate(Treenode<T> l) {
+	     Treenode<T> r=l.right;
+	     Treenode<T> rl=r.left;
+	     
+	     r.left=l;
+	     l.right=rl;
+	     
+	     return r;
+	        
 	}
-	private void rightRotate() {
+	private Treenode<T> rightRotate(Treenode<T> r) {
+	    Treenode<T> l= r.left;
+	    Treenode<T> lr= l.right;
+	    
+	    l.right=r;
+	    r.left= lr;
+	    
+	    return l;
+	    
 	    
 	}
 	private void Parent() {
 	    
 	}
-	private int getBalance(Treenode n) {
+	private int getBalance(Treenode<T> n) {
 	    if (n==null) {
 	        return 0;
 	    }
