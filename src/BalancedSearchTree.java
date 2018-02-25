@@ -80,7 +80,11 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    if(lookup(item)==true) {
 	    throw new DuplicateKeyException();
 	    }
-
+	    else insertHelper(root,item);
+	    
+	    int balance=getBalance(root);
+	    
+	    
 	}
 
 	@Override
@@ -141,6 +145,15 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    }
 	    
 	}
+	private void insertHelper(Treenode<T> node, T item){
+	    if (node.key==null) node.key=item;
+	    else if (node.key.compareTo(item)<0) {
+	        insertHelper(node.left,item);
+	    }
+	    else if (node.key.compareTo(item)>0) {
+	        insertHelper(node.right,item);
+	    }
+	}
 	private Treenode<T> leftRotate(Treenode<T> l) {
 	     Treenode<T> r=l.right;
 	     Treenode<T> rl=r.left;
@@ -166,7 +179,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    
 	}
 	private int getBalance(Treenode<T> n) {
-	    if (n==null) {
+	    if (n.key==null) {
 	        return 0;
 	    }
 	    return heightHelper(n.left) - heightHelper(n.right);
