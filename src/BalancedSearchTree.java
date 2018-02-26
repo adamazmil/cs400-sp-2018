@@ -144,7 +144,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    
 	}
 	   private void insertHelper(Treenode<T> node, T item){
-	        if (node.key==null) new Treenode<T> (item);
+	        if (node.key==null) node = new Treenode<T> (item);
 	        else if (node.key.compareTo(item)<0) {
 	            insertHelper(node.left,item);
 	        }
