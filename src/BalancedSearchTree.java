@@ -82,7 +82,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
         }
         else insertHelper(root,item);
         
-        int balance=getBalance(root);
+        balancing(root);
     }
 
 	@Override
@@ -144,7 +144,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    
 	}
 	   private void insertHelper(Treenode<T> node, T item){
-	        if (node.key==null) node.key=item;
+	        if (node.key==null) new Treenode<T> (item);
 	        else if (node.key.compareTo(item)<0) {
 	            insertHelper(node.left,item);
 	        }
@@ -152,6 +152,14 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	            insertHelper(node.right,item);
 	        }
 	    }
+	private void balancing(Treenode<T> node) {
+	          int balance = getBalance(node);
+	          
+	          if (balance >1 && (node.key.compareTo(node.left.key)<0)) {
+	              rightRotate(node);
+	          }
+	}
+	   
 	private Treenode<T> leftRotate(Treenode<T> curr) { //making right child the parent of current
 	     Treenode<T> rightNode = curr.right;
 	     Treenode<T> rLeftSubtree = rightNode.left;
@@ -162,6 +170,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	     return rightNode; //current node
 	        
 	}
+	
 	private Treenode<T> rightRotate(Treenode<T> curr) { //making left child the parent of current
 	    Treenode<T> leftNode = curr.left;
         Treenode<T> lRightSubtree = leftNode.right;
