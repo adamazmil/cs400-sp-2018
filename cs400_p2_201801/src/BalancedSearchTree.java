@@ -141,30 +141,28 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    }
 	    
 	}
-	private Treenode<T> leftRotate(Treenode<T> l) {
-	     Treenode<T> r=l.right;
-	     Treenode<T> rl=r.left;
+	private Treenode<T> leftRotate(Treenode<T> curr) { //making right child the parent of current
+	     Treenode<T> rightNode = curr.right;
+	     Treenode<T> rLeftSubtree = rightNode.left;
 	     
-	     r.left=l;
-	     l.right=rl;
+	     rightNode.left = curr; //rotates left
+	     curr.right = rLeftSubtree; //left subtree of right node becomes right subtree of "current"
 	     
-	     return r;
+	     return rightNode; //current node
 	        
 	}
-	private Treenode<T> rightRotate(Treenode<T> r) {
-	    Treenode<T> l= r.left;
-	    Treenode<T> lr= l.right;
+	private Treenode<T> rightRotate(Treenode<T> curr) { //making left child the parent of current
+	    Treenode<T> leftNode = curr.left;
+        Treenode<T> lRightSubtree = leftNode.right;
+        
+        leftNode.right = curr; //rotates right
+        curr.left = lRightSubtree; //right subtree of left node becomes left subtree of "current"
+        
+        return leftNode; //current node
 	    
-	    l.right=r;
-	    r.left= lr;
-	    
-	    return l;
-	    
-	    
-	}
-	private void Parent() {
 	    
 	}
+
 	private int getBalance(Treenode<T> n) {
 	    if (n==null) {
 	        return 0;
