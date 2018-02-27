@@ -34,7 +34,18 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	@Override
 	public String inAscendingOrder() {
 		//TODO : must return comma separated list of keys in ascending order
-		return "" ;
+	    
+		return inOrder(root) ;
+	}
+	private String inOrder(Treenode<T> node) {
+	    String result ="";
+	    if (!(node==null)) {
+	        
+	        inOrder(node.left);
+	        result=""+ node.key +",";
+	        inOrder(node.right);
+	    }
+	    return result;
 	}
 
 	@Override
@@ -44,7 +55,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    if (root==null) {
 	        return true;    
 	        }
-	    else return false;
+	    return false;
 	}
 
 	@Override
@@ -144,7 +155,7 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	    
 	}
 	   private void insertHelper(Treenode<T> node, T item){
-	        if (node.key==null) node = new Treenode<T> (item);
+	        if (node==null) node = new Treenode<T> (item);
 	        else if (node.key.compareTo(item)<0) {
 	            insertHelper(node.left,item);
 	        }

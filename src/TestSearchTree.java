@@ -88,7 +88,7 @@ public class TestSearchTree {
 
 	@Test
 	public void test04_isEmpty_after_one_insert() throws DuplicateKeyException {
-		tree.insert("1");
+		tree.insert("A");
 		expected = "false";
 		actual = "" + tree.isEmpty();
 		if (! expected.equals(actual))
