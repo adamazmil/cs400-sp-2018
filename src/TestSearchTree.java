@@ -135,7 +135,22 @@ public class TestSearchTree {
 	    
 	}
 	
-	
+	@Test
+	/** tests that in ascending order return correct value after multiple inserts */
+	public void test09_many_value_ascending() throws DuplicateKeyException{
+	    tree.insert("B");
+	    tree.insert("D");
+	    tree.insert("A");
+	    tree.insert("E");
+	    tree.insert("F");
+	    tree.insert("C");
+	    tree.insert("H");
+	    tree.insert("G");
+	    actual = tree.inAscendingOrder();
+	    expected = "A,B,C,D,E,F,G,H,";
+	    if (! expected.equals(actual))
+	        fail("expected: "+expected+ " actual: "+actual);
+	}
 
 }
 
