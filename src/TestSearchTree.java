@@ -126,6 +126,16 @@ public class TestSearchTree {
 		if (! expected.equals(actual))
 			fail("expected: "+expected+ " actual: "+actual);
 	}
+	
+	@Test(expected = DuplicateKeyException.class)
+	/** tests that a duplicate exception is thrown when two As is inserted.*/
+	public void test08_duplicateException_after_two_insert() throws DuplicateKeyException{
+	    tree.insert("A");
+	    tree.insert("A");
+	    
+	}
+	
+	
 
 }
 
