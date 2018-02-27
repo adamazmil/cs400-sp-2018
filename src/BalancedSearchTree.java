@@ -162,6 +162,8 @@ public class BalancedSearchTree<T extends Comparable<T>> implements SearchTreeAD
 	        else if (node.key.compareTo(item)>0) {
 	            insertHelper(node.right,item);
 	        }
+		   
+		if ( root == null ) root = node;
 	    }
 	private void balancing(Treenode<T> node) {
 	          int balance = getBalance(node);
